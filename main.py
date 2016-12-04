@@ -3,6 +3,7 @@ from functools import partial
 
 from browser import document, window
 from browser import timer
+from javascript import JSConstructor
 
 import greeting
 
@@ -82,3 +83,20 @@ def generator(evt):
         except StopIteration as stop:
             print('Generator return value:', stop.value)
             break
+
+
+Promise = JSConstructor(window.Promise)
+
+
+def sleep(secs):
+    def callback(resolve, reject):
+        timer.set_timeout(resolve, secs * 1000)
+    return Promise(callback)
+
+
+@bind('button.promise', 'click')
+def promise(evt):
+    print('Sleeping for 3 seconds...')
+    def callback(val):
+        print('Woke up!')
+    sleep(3).then(callback)
