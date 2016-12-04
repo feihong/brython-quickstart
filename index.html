@@ -7,6 +7,7 @@
   <title>Brython Quickstart</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
   <script src='brython/brython.js'></script>
+  <script src='brython/brython_modules.js'></script>
 </head>
 <body class='container' onload='brython(1)'>
 
@@ -20,9 +21,16 @@
   <button class='btn debug'>Debug</button>
 </div>
 
+<div style='margin-bottom: 1em'>
+  <button class='btn timeout'>Timeout</button>
+  <button class='btn promise'>Promise</button>
+  <button class='btn coroutine'>Coroutine</button>
+</div>
+
+
 <!-- scripts -->
 <script src='https://code.jquery.com/jquery-3.0.0.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
-<script type='text/python3' src='main.py'></script>
+<script type='text/python' src='main.py'></script>
 </body>
 </html>

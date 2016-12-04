@@ -1,20 +1,7 @@
 import random
 from browser import document
 
-
-GREETINGS = [
-    'Hello World',
-    'Hola Mundo',
-    'ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਦੁਨਿਆ',
-    'こんにちは世界',
-    '你好世界',
-    'Përshendetje Botë',
-    'مرحبا بالعالم',
-    'Բարեւ, աշխարհ',
-    'হ্যালো দুনিয়া',
-    'Saluton mondo',
-    'გამარჯობა მსოფლიო',
-]
+import greeting
 
 
 def bind(selector, event_name):
@@ -30,7 +17,7 @@ def bind(selector, event_name):
 
 @bind('button.change', 'click')
 def change(evt):
-    document['content'].text = random.choice(GREETINGS)
+    document['content'].text = greeting.get_greeting()
 
 
 @bind('button.error', 'click')
