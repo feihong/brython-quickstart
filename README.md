@@ -2,18 +2,23 @@
 
 ## Installation
 
+Get the Brython source files:
+
+```
+cd ~/dev
+git clone https://github.com/brython-dev/brython
+```
+
+In project root:
+
 ```
 mkvirtualenv -p python3 brython
-mkdir brython
-cd brython
-python -m brython --install
+pip install Invoke
+ln -s ~/dev/brython/www/src brython
 ```
 
-## Installation (temporary instructions)
+## Running the server
 
 ```
-wget https://github.com/brython-dev/brython/archive/master.zip
-unzip master.zip
-cd brython-master/setup
-python setup.py install
+inv serve
 ```

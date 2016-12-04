@@ -1,5 +1,8 @@
 import random
-from browser import document
+from functools import partial
+
+from browser import document, window
+from browser import timer
 
 import greeting
 
@@ -45,3 +48,21 @@ def debug(evt):
         if i == 5:
             __debugger__
         print('{} {}'.format(i, c))
+
+
+@bind('button.timeout', 'click')
+def timeout(evt):
+    """
+    Using timer.set_timeout() gives you a nicer-looking console message when an
+    exception is raised.
+
+    """
+
+    # timer.set_timeout(partial(print, 'Using set_timeout'), 100)
+    # window.setTimeout(partial(print, 'Using setTimeout'), 200)
+
+    def bad_callback():
+        z = 7/0
+
+    timer.set_timeout(bad_callback, 300)
+    window.setTimeout(bad_callback, 400)
