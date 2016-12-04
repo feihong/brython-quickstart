@@ -65,4 +65,20 @@ def timeout(evt):
         z = 7/0
 
     timer.set_timeout(bad_callback, 300)
-    window.setTimeout(bad_callback, 400)
+    # window.setTimeout(bad_callback, 400)
+
+
+@bind('button.generator', 'click')
+def generator(evt):
+    def count(n):
+        for i in range(1, n+1):
+            yield i
+        return chr(random.randint(65, 80))
+
+    gen = count(7)
+    while True:
+        try:
+            print('Number:', next(gen))
+        except StopIteration as stop:
+            print('Generator return value:', stop.value)
+            break
