@@ -3,9 +3,9 @@ from functools import partial
 
 from browser import document, window
 from browser import timer
-from javascript import JSConstructor
 
 import greeting
+from promise import Promise, P, sleep, get
 
 
 def bind(selector, event_name):
@@ -85,18 +85,35 @@ def generator(evt):
             break
 
 
-Promise = JSConstructor(window.Promise)
-
-
-def sleep(secs):
-    def callback(resolve, reject):
-        timer.set_timeout(resolve, secs * 1000)
-    return Promise(callback)
-
-
-@bind('button.promise', 'click')
-def promise(evt):
+@bind('button.sleep', 'click')
+def promise_1(evt):
     print('Sleeping for 3 seconds...')
-    def callback(val):
+    def done_sleeping(val):
         print('Woke up!')
-    sleep(3).then(callback)
+    sleep(3).then(done_sleeping)
+
+
+@bind('button.ajax', 'click')
+def promise_2(evt):
+    print('Fetching message.json...')
+    def got_obj(obj):
+        print('Response object:', obj)
+        print('Response object (converted to dict):', obj.to_dict())
+    get('message.json').then(got_obj)
+
+
+@bind('button.chaining', 'click')
+def promise_3(evt):
+    """
+    Unfortunately, chaining in Brython does not work as expected. The
+    equivalent JavaScript is:
+
+    Promise.resolve(5).then(x => Promise.resolve(x * 2)).then(x => console.log(x))
+
+    When run in the browser, the output is 10. The output of this function is,
+    for some reason, a Promise object.
+
+    """
+    def callback(val):
+        print('Chaining result:', val.to_dict())
+    P.resolve(5).then(lambda x: P.resolve(x * 2)).then(callback)
