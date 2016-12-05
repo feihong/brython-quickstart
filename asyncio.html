@@ -4,7 +4,7 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
   <meta http-equiv='x-ua-compatible' content='ie=edge'>
-  <title>Brython Quickstart</title>
+  <title>Brython Asyncio Quickstart</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'>
   <style>
     div { margin-bottom: 1rem; }
@@ -13,34 +13,17 @@
 </head>
 <body class='container' onload='brython(1)'>
 
-<h1>Brython Quickstart</h1>
-
-<p id='content'>Hello Brython</p>
+<h1>Brython Asyncio Quickstart</h1>
 
 <div>
-  <button class='btn change'>Change greeting</button>
-  <button class='btn error'>Error</button>
-  <button class='btn debug'>Debug</button>
-</div>
-
-<div>
-  <button class='btn timeout'>Timeout</button>
-  <button class='btn generator'>Generator</button>
-</div>
-
-<div>
-  <button class='btn sleep'>Promise: sleep</button>
-  <button class='btn ajax'>Promise: Ajax</button>
-  <button class='btn chaining'>Promise: Chaining</button>
-</div>
-
-<div>
-  <a href='asyncio.html'>Asyncio</a>
+  <button class='btn simple'>Simple</button>
+  <button class='btn sleep'>Sleep</button>
+  <button class='btn ajax'>Ajax</button>
 </div>
 
 <!-- scripts -->
 <script src='https://code.jquery.com/jquery-3.0.0.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js'></script>
-<script type='text/python' src='main.py'></script>
+<script type='text/python' src='asyncio_quickstart.py'></script>
 </body>
 </html>
